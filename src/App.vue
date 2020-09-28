@@ -1,32 +1,30 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
+    
     <router-view/>
+    <Tabbar :items="items" v-show="this.$route.meta.isShowTab"/>
   </div>
 </template>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+<script>
+import Tabbar from './components/Tabbar'
+export default {
+  components:{
+    Tabbar,
+  },
+  data(){
+    return{
+      items:[
+        {title:"首页",path:"/",iconfont:"iconfont icon-shouye"},
+        {title:"分类",path:"/about", iconfont:"iconfont icon-classifi"},
+        {title:"购物车",path:"/mycar", iconfont:"iconfont icon-gouwuche"},
+        {title:"我的",path:"/person", iconfont:"iconfont icon-wode4"},
+      ]
+    }
+  },
+  
 }
+</script>
 
-#nav {
-  padding: 30px;
-}
+<style lang="scss">
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
 </style>
